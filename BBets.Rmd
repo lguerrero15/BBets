@@ -1,12 +1,12 @@
 ---
 title: "Brownlows Bets"
-author: "Your Name Goes Here"
+author: "Leilani Guerrero"
 output: 
   html_document:
     number_sections: true
     toc: true
     toc_depth: 5
-date: "`r Sys.Date()`"    
+date: "Summer 2022"    
     
 ---
 ```{r setup, include=FALSE}
@@ -35,6 +35,44 @@ There are 3 questions and there should be at least 3 separate commits, at least 
 ## Our strategy is to build a Function and the use it to answer the three questions. 
 
 The function will be given a class_size by number of students, odds, and Number_of_times brownlow made the bet.  It will give you back how much Brownlows earnings were. We will use it to answer our three questions below. If you can, improve this function by giving default values to some of its inputs. 
+
+##  return with 35 students, 2:1 payout
+```{r}
+urn = 1:365
+bank=0
+saveBank = vector ('numeric')
+for (k in 1:40){}
+for (i in 1:637){
+  class = sample(urn, size=35, replace=TRUE)
+  if (length(unique(class))== 35){
+    bank = bank - 2
+  }else{
+    bank = bank + 1
+  }
+  saveBank[k] = bank
+}
+
+hist(saveBank)
+```
+
+##  Question 1 find fair odds
+
+```{r}
+numClass = 35
+# my guess at fair odds = $xxx : $1
+odds = 4.35
+counttoDo = 637
+
+for (k in 1:40){
+  bank = (BrLw (numClass,odds,counttoDo))
+  saveBank[k] = bank
+}
+print(mean(saveBank))
+hist(saveBank)
+```
+To make the game fair, Brownlow should payout 'r mean(saveBank)' 
+
+
 
 # In the class and payoff as described  If you highered 40 brownlow substitute teachers to do the same thing that Brownlow did then.
 ## what is their average earnings
